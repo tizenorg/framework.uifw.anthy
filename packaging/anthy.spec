@@ -29,6 +29,8 @@ make
 
 %install
 rm -rf ${RPM_BUILD_ROOT}
+mkdir -p %{buildroot}%{_datadir}/license
+cp COPYING %{buildroot}%{_datadir}/license/%{name}
 %makeinstall
 
 %clean
@@ -41,6 +43,7 @@ rm -rf ${RPM_BUILD_ROOT}
 
 %files
 %defattr(-,root,root)
+%{_datadir}/license/%{name}
 %{_bindir}/*
 %{_sysconfdir}/*
 %{_datadir}/anthy
