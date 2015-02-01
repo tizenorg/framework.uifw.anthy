@@ -7,6 +7,7 @@ Version: 9100h
 Release: 1
 URL: http://www.sourceforge.jp/projects/anthy/
 Source0: %{name}-%{version}.tar.gz
+Source1001: 	anthy.manifest
 #
 # URL: http://cannadic.oucrc.org
 # Source1: cannadic-0.93.tar.gz
@@ -18,6 +19,7 @@ BuildRoot: %{_tmppath}/%{name}-root
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 #tar zxf %{_sourcedir}/cannadic-0.93.tar.gz
 #ln -s ../cannadic-0.93/gcanna.t mkanthydic
 #ln -s ../cannadic-0.93/gcannaf.t mkanthydic
@@ -42,6 +44,7 @@ rm -rf ${RPM_BUILD_ROOT}
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_datadir}/license/%{name}
 %{_bindir}/*
